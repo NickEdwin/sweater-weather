@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Search API" do
+describe "Latittude, Longitude API" do
 
   it "receives a 200 response" do
     get '/api/v1/forecast?location=denver,co'
