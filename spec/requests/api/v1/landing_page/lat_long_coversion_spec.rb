@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Latittude, Longitude API" do
-  it "receives a 200 response" do
+  it "receives a 200 response", :vcr do
     get '/api/v1/forecast?location=denver,co'
     JSON.parse(response.body)
 
@@ -9,7 +9,7 @@ describe "Latittude, Longitude API" do
     expect(response.status).to eq(200)
   end
 
-  it "returns correct lat/long for a correct city" do
+  it "returns correct lat/long for a correct city", :vcr do
     get '/api/v1/forecast?location=denver,co'
     data = JSON.parse(response.body)
 
@@ -20,7 +20,7 @@ describe "Latittude, Longitude API" do
     expect(data["lon"]).to eq(long)
   end
 
-  it "when entering an invalid city it defaults to the center of the country" do
+  it "when entering an invalid city it defaults to the center of the country", :vcr do
     get '/api/v1/forecast?location=dfskjdshfkdhfs,xx'
     data = JSON.parse(response.body)
 
