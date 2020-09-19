@@ -20,4 +20,15 @@ describe "Search API" do
     expect(data["lat"]).to eq(lat)
     expect(data["lon"]).to eq(long)
   end
+
+  it "when entering an invalid city it defaults to the center of the country" do
+    get '/api/v1/forecast?location=dfskjdshfkdhfs,xx'
+    data = JSON.parse(response.body)
+
+    lat = 38.43
+    long = -96.35
+
+    expect(data["lat"]).to eq(lat)
+    expect(data["lon"]).to eq(long)
+  end
 end
