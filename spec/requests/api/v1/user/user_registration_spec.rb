@@ -5,7 +5,7 @@ describe "API V1 Users", type: 'request' do
     context "with valid parameters" do
       let(:valid_params) do
         {
-          email: "email1@gmail.com",
+          email: "email1234@gmail.com",
           password: "password1"
         }
       end
@@ -20,7 +20,7 @@ describe "API V1 Users", type: 'request' do
         post "/api/v1/users", params: valid_params
 
         @user = User.last
-        expect(@user.email).to eq("email1@gmail.com")
+        expect(@user.email).to eq("email1234@gmail.com")
       end
 
       context "with valid invalid parameters" do

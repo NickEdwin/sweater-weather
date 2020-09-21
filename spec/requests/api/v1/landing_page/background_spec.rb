@@ -14,10 +14,9 @@ describe "Image API" do
     data = JSON.parse(response.body)
 
     expect(data[0]["type"]).to eq("photo")
-    expect(data[0]["tags"]).to include("denver")
 
     expect(data[0]["type"]).to_not eq("video")
     expect(data[0]["tags"]).to_not include("dallas")
   end
-  
+
 end
