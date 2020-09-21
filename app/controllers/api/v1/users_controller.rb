@@ -3,8 +3,8 @@ require 'securerandom'
 class Api::V1::UsersController < ApplicationController
   def create
     @new_user = User.new(
-      email: params[:email],
-      password: params[:password],
+      email: user_params[:email],
+      password: user_params[:password],
       api_key: SecureRandom.hex(13)
       )
     if @new_user.valid?
