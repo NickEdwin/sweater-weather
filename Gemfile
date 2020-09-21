@@ -12,7 +12,7 @@ gem 'rake'
 gem 'faker'
 gem 'rack-cors'
 gem 'fast_jsonapi'
-
+gem 'faraday'
 
 
 group :development, :test do
@@ -24,6 +24,7 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem 'factory_bot_rails'
+  gem 'vcr'
 end
 
 group :development do
