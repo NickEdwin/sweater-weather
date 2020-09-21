@@ -4,7 +4,7 @@ describe "Weather API" do
   it "Returns correct weather details", :vcr do
     get '/api/v1/forecast?location=denver,co'
     data = JSON.parse(response.body)
-    
+
     expect(data["current"]["sunrise"]).to_not be(nil)
     expect(data["current"]["sunset"]).to_not be(nil)
     expect(data["current"]["temp"]).to_not be(nil)
@@ -22,6 +22,5 @@ describe "Weather API" do
     expect(data["daily"]).to_not be(nil)
 
     expect(data["minutely"]).to be(nil)
-
   end
 end
