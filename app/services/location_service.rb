@@ -4,6 +4,12 @@ class LocationService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def distance(start, lat, lng)
+    response = conn.get("directions/v2/route?from=#{start}&to=#{lat},#{lng}&key=#{ENV['ENV_MAPQUEST_KEY']}")
+    body = JSON.parse(response.body, symbolize_names: true)
+    body[:route][:distance]
+  end
+
   private
 
   def conn

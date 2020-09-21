@@ -19,6 +19,8 @@ RSpec.configure do |config|
     config.hook_into :faraday
     config.filter_sensitive_data('DONT_SHARE_MY_MAPQUEST_SECRET_KEY') { ENV['ENV_MAPQUEST_KEY'] }
     config.filter_sensitive_data('DONT_SHARE_MY_WEATHERMAP_SECRET_KEY') { ENV['ENV_WEATHERMAP_KEY'] }
+    config.filter_sensitive_data('DONT_SHARE_MY_PIXABAY_SECRET_KEY') { ENV['ENV_PIXABAY_KEY'] }
+    config.filter_sensitive_data('DONT_SHARE_MY_MOUNTAINPROJECT_SECRET_KEY') { ENV['ENV_MOUNTAINPROJECT_KEY'] }
     config.configure_rspec_metadata!
   end
 end
