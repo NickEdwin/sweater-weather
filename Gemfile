@@ -13,6 +13,7 @@ gem 'faker'
 gem 'rack-cors'
 gem 'fast_jsonapi'
 gem 'faraday'
+gem 'bcrypt', '~> 3.1.7'
 
 
 group :development, :test do
