@@ -1,4 +1,4 @@
-class Api::V1::RoutesController < ApplicationController
+class Api::V1::ClimbingRoutesController < ApplicationController
   def show
     lat_long = Location.conversion(params[:location])
     @weather = Weather.forecast(lat_long)
