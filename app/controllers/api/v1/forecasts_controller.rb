@@ -1,5 +1,4 @@
 class Api::V1::ForecastsController < ApplicationController
-
   def show
     @lat_long = Location.conversion(params[:location])
 
