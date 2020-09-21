@@ -22,6 +22,7 @@ describe "API V1 Users", type: 'request' do
 
         expect(data["data"]["attributes"]["email"]).to eq(@user.email)
         expect(data["data"]["attributes"]["api_key"]).to eq(@user.api_key)
+        expect(session[:user_id]).to eq(@user.id)
       end
 
       context "with invalid parameters" do
