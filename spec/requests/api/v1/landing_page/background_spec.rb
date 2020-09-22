@@ -18,5 +18,4 @@ describe "Image API" do
     expect(data[0]["type"]).to_not eq("video")
     expect(data[0]["tags"]).to_not include("dallas")
   end
-
 end
