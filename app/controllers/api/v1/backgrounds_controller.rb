@@ -1,6 +1,6 @@
 class Api::V1::BackgroundsController < ApplicationController
   def show
-    @background = Background.search(params[:location])
-    render json: @background[:hits].sample(1)
+    image = BackgroundFacade.new(params[:location])
+    render json: BackgroundSerializer.new(image)
   end
 end
