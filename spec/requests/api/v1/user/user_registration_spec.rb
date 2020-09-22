@@ -6,7 +6,8 @@ describe "API V1 Users", type: 'request' do
       let(:valid_params) do
         {
           email: "email1234@gmail.com",
-          password: "password1"
+          password: "password1",
+          password_confirmation: "password1"
         }
       end
 
