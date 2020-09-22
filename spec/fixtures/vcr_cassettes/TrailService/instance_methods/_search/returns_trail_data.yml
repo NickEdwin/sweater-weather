@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.mountainproject.com/data/get-routes-for-lat-lon?key=DONT_SHARE_MY_MOUNTAINPROJECT_SECRET_KEY&lat=39.7392&lon=104.9903&maxDistance=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 22 Sep 2020 16:11:41 GMT
+      server:
+      - Apache
+      access-control-allow-origin:
+      - "*"
+      cache-control:
+      - max-age=0, must-revalidate, no-cache, no-store, private
+      pragma:
+      - no-cache
+      x-ap-request-id:
+      - c7ccf921-9a65-408f-afdf-41f890a8a9ac
+      content-length:
+      - '38'
+      content-type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "routes": [],
+            "success": 1
+        }
+  recorded_at: Tue, 22 Sep 2020 16:11:42 GMT
+recorded_with: VCR 6.0.0

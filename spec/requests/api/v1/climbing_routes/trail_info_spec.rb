@@ -15,7 +15,7 @@ describe "Climbing API" do
     expect(@results["data"]["type"]).to eq("climbing_route")
     expect(@results["data"]["attributes"]["location"]).to eq("denver,co")
     expect(@results["data"]["attributes"]["forecast"]["summary"]).to eq("broken clouds")
-    expect(@results["data"]["attributes"]["forecast"]["temperature"]).to eq(62.35)
+    expect(@results["data"]["attributes"]["forecast"]["temperature"]).to eq(63.64)
   end
 
   it "returns proper information on climbing routes", :vcr do
@@ -23,6 +23,6 @@ describe "Climbing API" do
     expect(@results["data"]["attributes"]["routes"].first["type"]).to eq("Boulder")
     expect(@results["data"]["attributes"]["routes"].first["rating"]).to eq("V2")
     expect(@results["data"]["attributes"]["routes"].first["location"]).to include("Colorado")
-    expect(@results["data"]["attributes"]["routes"].first["distance_to_route"]).to eq(27.018)
+    expect(@results["data"]["attributes"]["routes"].first["distance_to_route"]).to eq(0.02)
   end
 end
