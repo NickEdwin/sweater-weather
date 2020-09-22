@@ -12,10 +12,12 @@ describe "Image API" do
   it "Returns image of city in search", :vcr do
     get '/api/v1/backgrounds?location=denver,co'
     data = JSON.parse(response.body)
+    
+    expect(data["data"]["type"]).to eq("background")
+    expect(data["data"]["type"]).to_not eq("video")
 
-    expect(data[0]["type"]).to eq("photo")
-
-    expect(data[0]["type"]).to_not eq("video")
-    expect(data[0]["tags"]).to_not include("dallas")
+    expect(data["data"]["attributes"]["image"]["tags"]).to include("city")
+    expect(data["data"]["attributes"]["image"]["pixabay_site"]).to eq("Pixabay.com")
+    expect(data["data"]["attributes"]["image"]["author"]).to eq("AveCalvar")
   end
 end
