@@ -17,6 +17,6 @@ Another aspect of this API is that users can also plan road trips! A user will s
 
 ## Known issues and bugs  
 
-Mapquest api will not enter an invalid city, when an invalid location is entered the lat/long coordinates default to the exact center of the USA. Will need to ass some guard logic against this exact location (doesn't look like anyone lives there so it shouldn't alienate users.)   
+Mapquest api will not enter an invalid city, when an invalid location is entered the lat/long coordinates default to the exact center of the USA. Will need to assign some guard logic against this exact location (doesn't look like anyone lives there so it shouldn't alienate users.)   
 
 Images for city from Pixabay are sometimes just artsy images and not an image that truly depicts the feel of the city. Right now the API will call for 20 images and select one randomly for some variety, but that means some strange ones. Perhaps a different API would be a better choice to avoid this.  
