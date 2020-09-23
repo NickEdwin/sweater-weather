@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe "Weather API" do
+  it "receives a 200 response", :vcr do
+    get '/api/v1/forecast?location=denver,co'
+    JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+  end
+  
   it "Returns correct weather details", :vcr do
     get '/api/v1/forecast?location=denver,co'
     data = JSON.parse(response.body)
