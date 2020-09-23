@@ -3,23 +3,12 @@ class Api::V1::SessionsController < ApplicationController
     if user = User.find_by_email(user_params[:email])
       if user.authenticate(user_params[:password])
         session[:user_id] = user.id
-        render json: {"data":
-          {
-            "type": "users",
-            "id": user.id,
-            "attributes": {
-              "email": user.email,
-              "api_key": user.api_key
-              }
-            }
-          }
+        render json: SessionsSerializer.new(user)
+      else
+        render json: {"data":{"errors": user.errors.full_messages}}, status: 400
       end
     else
-      render json: {"data":
-        {
-          "errors": "Invalid credentials"
-        }
-      }, status: 400
+      render json: {"data":{"errors": "Invalid credentials"}}, status: 400
     end
   end
 
