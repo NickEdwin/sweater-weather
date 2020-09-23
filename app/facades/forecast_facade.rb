@@ -10,9 +10,14 @@ class ForecastFacade
   end
 
   def current_weather(location)
-    lat_long = Location.conversion(location)
     weather_service = WeatherService.new
-    response = weather_service.forecast(lat_long)
+    response = weather_service.forecast(coordinates(location))
     Forecast.new(response)
+  end
+
+  def coordinates(location)
+    location_service = LocationService.new
+    response = location_service.conversion(location)
+    response[:results][0][:locations][0][:latLng]
   end
 end
