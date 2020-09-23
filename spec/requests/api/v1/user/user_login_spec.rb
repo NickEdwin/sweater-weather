@@ -4,6 +4,7 @@ describe "API V1 Users", type: 'request' do
   describe "POST /api/v1/sessions" do
     context "with valid parameters" do
       User.create(email: "email1@gmail.com", password: "password1", api_key: "api")
+
       let(:valid_params) do
         {
           email: "email1@gmail.com",
@@ -19,14 +20,14 @@ describe "API V1 Users", type: 'request' do
         data = JSON.parse(response.body)
 
         @user = User.last
-        expect(data["data"]["attributes"]["email"]).to eq(@user.email)
-        expect(data["data"]["attributes"]["api_key"]).to eq(@user.api_key)
+        expect(data["data"]["attributes"]["email"]).to eq("email1@gmail.com")
+        expect(data["data"]["attributes"]["api_key"]).to eq("api")
         expect(session[:user_id]).to eq(@user.id)
       end
 
-      context "with invalid parameters" do
+      context "with invalid email" do
         User.create(email: "email1@gmail.com", password: "password1", api_key: "api")
-        let(:invalid_params) do
+        let(:invalid_email_params) do
           {
             email: "",
             password: "password1",
@@ -35,11 +36,30 @@ describe "API V1 Users", type: 'request' do
         end
 
         it "can log in an existing user with bad params" do
-          post "/api/v1/sessions", params: invalid_params
+          post "/api/v1/sessions", params: invalid_email_params
           data = JSON.parse(response.body)
 
           expect(response.status).to eq(400)
           expect(data["data"]["errors"]).to eq("Invalid credentials")
+        end
+      end
+
+      context "with invalid password" do
+        User.create(email: "email1@gmail.com", password: "password1", api_key: "api")
+        let(:invalid_password_params) do
+          {
+            email: "email1@gmail.com",
+            password: "",
+            api_key: "api"
+          }
+        end
+
+        it "can log in an existing user with bad params" do
+          post "/api/v1/sessions", params: invalid_password_params
+          data = JSON.parse(response.body)
+
+          expect(response.status).to eq(400)
+          expect(data["data"]["errors"]).to eq("Invalid password")
         end
       end
     end

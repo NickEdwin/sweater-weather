@@ -4,7 +4,7 @@ class LocationService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def road_trip(origin, destination)
+  def travel_info(origin, destination)
     response = conn.get("directions/v2/route?key=#{ENV['ENV_MAPQUEST_KEY']}&from=#{origin}&to=#{destination}")
     JSON.parse(response.body, symbolize_names: true)
   end

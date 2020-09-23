@@ -5,7 +5,7 @@ class Api::V1::SessionsController < ApplicationController
         session[:user_id] = user.id
         render json: SessionsSerializer.new(user)
       else
-        render json: {"data":{"errors": user.errors.full_messages}}, status: 400
+        render json: {"data":{"errors": "Invalid password"}}, status: 400
       end
     else
       render json: {"data":{"errors": "Invalid credentials"}}, status: 400
