@@ -11,6 +11,7 @@ class Forecast
               :humidity,
               :visibility,
               :uv_index,
+              :description,
               :hourly,
               :seven_day_forecast
 
@@ -25,6 +26,7 @@ class Forecast
     @humidity = weather_info[:daily][0][:humidity]
     @visibility = weather_info[:current][:visibility]
     @uv_index = weather_info[:current][:uvi]
+    @description = weather_info[:current][:weather][0][:description]
     @hourly = weather_info[:hourly]
     @seven_day_forecast = weather_info[:daily]
   end
