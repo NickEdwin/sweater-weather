@@ -19,7 +19,6 @@ describe "API V1 Users", type: 'request' do
         data = JSON.parse(response.body)
 
         @user = User.last
-
         expect(data["data"]["attributes"]["email"]).to eq(@user.email)
         expect(data["data"]["attributes"]["api_key"]).to eq(@user.api_key)
         expect(session[:user_id]).to eq(@user.id)
